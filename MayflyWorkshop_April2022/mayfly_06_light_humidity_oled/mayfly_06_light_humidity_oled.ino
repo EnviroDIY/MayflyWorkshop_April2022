@@ -1,12 +1,12 @@
 #include <Wire.h>
-#include <Adafruit_SSD1306.h>    
-#include <Adafruit_GFX.h>
+//#include <Adafruit_SSD1306.h>    
+//#include <Adafruit_GFX.h>
 #include "Adafruit_SHT4x.h"
 
 Adafruit_SHT4x sht4 = Adafruit_SHT4x();
 
-#define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
-Adafruit_SSD1306 display(128, 32, &Wire, -1);
+//#define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
+//Adafruit_SSD1306 display(128, 32, &Wire, -1);
 
 int State8 = LOW;
 int State9 = LOW;
@@ -27,14 +27,14 @@ void setup ()
     sht4.setPrecision(SHT4X_HIGH_PRECISION);
     sht4.setHeater(SHT4X_NO_HEATER);
 
-  display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);  // initialize with the I2C addr 0x3C (for the 128x64)
-  display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(WHITE);
-  display.setCursor(0,0);
-  display.println("Mayfly");
-  display.println("Light/Humidity");
-  display.display();
+//  display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);  // initialize with the I2C addr 0x3C (for the 128x64)
+//  display.clearDisplay();
+//  display.setTextSize(1);
+//  display.setTextColor(WHITE);
+//  display.setCursor(0,0);
+//  display.println("Mayfly");
+//  display.println("Light/Humidity");
+//  display.display();
 
 }
 
@@ -63,18 +63,18 @@ void loop ()
   Serial.print("Light: "); Serial.print(lightpercent,1);Serial.print("%;    ");
   Serial.print("Battery: "); Serial.print(batteryvoltage);Serial.println("v;   ");
 
-  //the OLED code:  
-        display.clearDisplay();   //you always have to clear the display each time you want to push new text to it
-        display.setTextSize(1);
-        display.setTextColor(WHITE);
-        display.setCursor(0,0);
-        //display.print("Temp: "); 
-        display.print(temp.temperature); display.print((char)247);  display.println("C");
-        //display.print("Hum: "); 
-        display.print(humidity.relative_humidity); display.println(" %rH");
-        display.print("Light: "); display.print(lightpercent,1); display.println("%");
-        display.print("Battery: "); display.print(batteryvoltage); display.print("v");
-        display.display();   //you always have to end each push with this line in order to actually display all of the various lines above on the screen 
+  //      //the OLED code:  
+  //      display.clearDisplay();   //you always have to clear the display each time you want to push new text to it
+  //      display.setTextSize(1);
+  //      display.setTextColor(WHITE);
+  //      display.setCursor(0,0);
+  //      //display.print("Temp: "); 
+  //      display.print(temp.temperature); display.print((char)247);  display.println("C");
+  //      //display.print("Hum: "); 
+  //      display.print(humidity.relative_humidity); display.println(" %rH");
+  //      display.print("Light: "); display.print(lightpercent,1); display.println("%");
+  //      display.print("Battery: "); display.print(batteryvoltage); display.print("v");
+  //      display.display();   //you always have to end each push with this line in order to actually display all of the various lines above on the screen 
 
     delay(1000);
 }
